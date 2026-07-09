@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+# i18nstack setup — install i18n CLI tools + register all skills with Claude Code
+set -e
+
+STACK_DIR="$(cd "$(dirname "$0")" && pwd)"
+SKILLS_DIR="$(dirname "$STACK_DIR")"
+
+TOOLS=(i18n-convert i18n-pseudo i18n-validate)
+
+# 1. Install missing CLI tools (npm preferred, homebrew fallback)
+missing=()
+for t in "${TOOLS[@]}"; do
+  command -v "$t" >/dev/null 2>&1 || missing+=("$t")
+done
+
+if [ ${#missing[@]} -gt 0 ]; then
+  pkgs=()
+  for t in "${missing[@]}"; do pkgs+=("@i18n-agent/$t"); done
+  if command -v npm >/dev/null 2>&1; then
+    echo "Installing CLI tools via npm: ${missing[*]}"
+    npm install -g "${pkgs[@]}" || true
+  elif command -v brew >/dev/null 2>&1; then
+    echo "Installing CLI tools via Homebrew: ${missing[*]}"
+    brew tap i18n-agent/tap && brew install "${missing[@]}" || true
+  else
+    echo "⚠ Neither npm nor Homebrew found — skipping CLI install."
+  fi
+  still_missing=()
+  for t in "${missing[@]}"; do
+    command -v "$t" >/dev/null 2>&1 || still_missing+=("$t")
+  done
+  if [ ${#still_missing[@]} -gt 0 ]; then
+    echo "⚠ Not installed: ${still_missing[*]}"
+    echo "  Install manually:  npm install -g @i18n-agent/<tool>"
+    echo "  or:                brew tap i18n-agent/tap && brew install <tool>"
+  fi
+fi
+
+# 2. Register skills: symlink each skill dir into ~/.claude/skills
+#    (only when this repo is cloned inside a .claude/skills directory)
+if [ "$(basename "$SKILLS_DIR")" = "skills" ]; then
+  linked=()
+  skipped=()
+  for skill_dir in "$STACK_DIR"/*/; do
+    [ -f "$skill_dir/SKILL.md" ] || continue
+    skill_name="$(basename "$skill_dir")"
+    target="$SKILLS_DIR/$skill_name"
+    if [ -L "$target" ] || [ ! -e "$target" ]; then
+      ln -snf "i18nstack/$skill_name" "$target"
+      linked+=("$skill_name")
+    else
+      skipped+=("$skill_name")
+    fi
+  done
+
+  # 3. Register slash commands: symlink commands/*.md into ~/.claude/commands
+  COMMANDS_DIR="$(dirname "$SKILLS_DIR")/commands"
+  mkdir -p "$COMMANDS_DIR"
+  linked_cmds=()
+  for cmd_file in "$STACK_DIR"/commands/*.md; do
+    [ -f "$cmd_file" ] || continue
+    cmd_name="$(basename "$cmd_file")"
+    target="$COMMANDS_DIR/$cmd_name"
+    if [ -L "$target" ] || [ ! -e "$target" ]; then
+      ln -snf "../skills/i18nstack/commands/$cmd_name" "$target"
+      linked_cmds+=("$cmd_name")
+    else
+      skipped+=("commands/$cmd_name")
+    fi
+  done
+
+  echo ""
+  echo "i18nstack ready."
+  echo "  linked skills: ${#linked[@]}"
+  echo "  linked commands: ${#linked_cmds[@]}"
+  if [ ${#skipped[@]} -gt 0 ]; then
+    echo "  skipped (a real file/dir already exists there): ${skipped[*]}"
+    echo "  To let i18nstack manage those, remove them and re-run ./setup"
+  fi
+else
+  echo ""
+  echo "i18nstack ready. (skipped skill symlinks — not cloned inside .claude/skills/)"
+  echo "  Recommended location: ~/.claude/skills/i18nstack"
+fi
+
+for t in "${TOOLS[@]}"; do
+  if command -v "$t" >/dev/null 2>&1; then
+    echo "  $t: $("$t" --version 2>/dev/null | head -1)"
+  fi
+done
