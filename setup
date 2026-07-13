@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# i18nstack setup — install i18n CLI tools + register skills/commands for Claude Code and Grok
+# i18nstack setup — install i18n CLI tools + register skills/commands for Claude Code, Grok, and Codex
 set -e
 
 STACK_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -216,11 +216,28 @@ register_grok() {
   fi
 }
 
+register_codex() {
+  local script="$STACK_DIR/scripts/register-codex.py"
+  if [ ! -f "$script" ]; then
+    echo "⚠ Codex registration script missing: $script"
+    return 0
+  fi
+  python3 "$script" "$STACK_DIR"
+}
+
 # --- register with supported agents ------------------------------------------
 
 in_canonical_location=0
-if [ "$(basename "$SKILLS_PARENT")" = "skills" ] && { [ "$AGENT_ID" = "claude" ] || [ "$AGENT_ID" = "grok" ]; }; then
-  in_canonical_location=1
+stack_name="$(basename "$STACK_DIR")"
+parent_name="$(basename "$SKILLS_PARENT")"
+agent_dir_name="$(basename "$(dirname "$SKILLS_PARENT")")"
+
+if [ "$stack_name" = "i18nstack" ]; then
+  if [ "$parent_name" = "skills" ] && { [ "$agent_dir_name" = ".claude" ] || [ "$agent_dir_name" = ".grok" ] || [ "$agent_dir_name" = ".agents" ]; }; then
+    in_canonical_location=1
+  elif [ "$parent_name" = ".codex" ] || [ "$SKILLS_PARENT" = "$HOME/.codex" ]; then
+    in_canonical_location=1
+  fi
 fi
 
 if [ "$in_canonical_location" -eq 1 ]; then
@@ -231,13 +248,17 @@ if [ "$in_canonical_location" -eq 1 ]; then
   if [ -d "$HOME/.grok" ] || [ "$AGENT_ID" = "grok" ]; then
     register_grok "$HOME/.grok"
   fi
+  if [ -d "$HOME/.codex" ] || [ -d "$HOME/.agents" ] || [ "$AGENT_ID" = "codex" ] || [ "$AGENT_ID" = "agents" ]; then
+    register_codex
+  fi
   echo ""
   echo "i18nstack ready."
 else
   echo ""
-  echo "i18nstack ready. (skipped skill registration — not in ~/.claude/skills/ or ~/.grok/skills/)"
+  echo "i18nstack ready. (skipped skill registration — clone into a supported agent path first)"
   echo "  Claude: git clone --depth 1 https://github.com/i18n-agent/i18nstack.git ~/.claude/skills/i18nstack && ~/.claude/skills/i18nstack/setup"
   echo "  Grok:   git clone --depth 1 https://github.com/i18n-agent/i18nstack.git ~/.grok/skills/i18nstack && ~/.grok/skills/i18nstack/setup"
+  echo "  Codex:  git clone --depth 1 https://github.com/i18n-agent/i18nstack.git ~/.codex/i18nstack && ~/.codex/i18nstack/setup"
 fi
 
 for t in "${TOOLS[@]}"; do

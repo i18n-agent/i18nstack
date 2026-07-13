@@ -12,7 +12,7 @@ allowed-tools:
   - Read
 ---
 
-# i18nstack: the i18n toolkit for Claude Code and Grok
+# i18nstack: the i18n toolkit for Claude Code, Grok, and Codex
 
 Three CLI tools + 46 language-specific translation skills. Route any i18n task
 to the right piece:
@@ -39,6 +39,7 @@ If anything is missing, run the stack's setup:
 
 - Claude: `~/.claude/skills/i18nstack/setup`
 - Grok: `~/.grok/skills/i18nstack/setup`
+- Codex: `~/.codex/i18nstack/setup`
 
 (or `npm install -g @i18n-agent/<tool>`).
 

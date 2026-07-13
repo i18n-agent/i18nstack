@@ -2,7 +2,7 @@
 
 **i18nstack turns Claude Code into a full localization team: format engineer, QA tester, release gate, and 46 native-quality translators.**
 
-Three battle-tested CLI tools, five workflow slash commands, and 46 language-specific translation skills for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Grok](https://github.com/xai-org/grok-cli), installed with one command.
+Three battle-tested CLI tools, five workflow slash commands, and 46 language-specific translation skills for [Claude Code](https://docs.anthropic.com/en/docs/claude-code), [Grok](https://github.com/xai-org/grok-cli), and [Codex](https://github.com/openai/codex), installed with one command.
 
 ## Install
 
@@ -18,7 +18,15 @@ git clone --depth 1 https://github.com/i18n-agent/i18nstack.git ~/.claude/skills
 git clone --depth 1 https://github.com/i18n-agent/i18nstack.git ~/.grok/skills/i18nstack && ~/.grok/skills/i18nstack/setup
 ```
 
-That's it. The setup script installs the CLI tools (npm, with Homebrew fallback) and registers every skill and slash command with your agent. Clone into either location — setup registers **both** Claude Code and Grok when their config directories exist.
+**Codex**
+
+```bash
+git clone --depth 1 https://github.com/i18n-agent/i18nstack.git ~/.codex/i18nstack && ~/.codex/i18nstack/setup
+```
+
+That's it. The setup script installs the CLI tools (npm, with Homebrew fallback) and registers every skill and slash command with your agent. Clone into any supported location — setup registers **all installed agents** (Claude Code, Grok, Codex) when their config directories exist.
+
+Codex uses a different skill format than Claude/Grok: setup writes adapter skills to `~/.agents/skills/` and slash prompts to `~/.codex/prompts/`, each pointing back to the native i18nstack source files.
 
 ## What's inside
 
@@ -48,19 +56,20 @@ Arabic (ar), Bulgarian (bg), Bengali (bn), Catalan (ca), Czech (cs), Welsh (cy),
 
 ## How it works
 
-Clone into `~/.claude/skills/i18nstack` or `~/.grok/skills/i18nstack`. Setup symlinks each skill directory into your agent's skills folder and wires up slash commands. A single `git pull` updates everything.
+Clone into `~/.claude/skills/i18nstack`, `~/.grok/skills/i18nstack`, or `~/.codex/i18nstack`. Setup symlinks each skill directory into Claude/Grok and writes Codex adapter skills. A single `git pull` updates everything.
 
 ```
 ~/.claude/skills/  (or ~/.grok/skills/)
 ├── i18nstack/          ← this repo
 ├── i18n-convert  →  i18nstack/i18n-convert
-├── i18n-pseudo   →  i18nstack/i18n-pseudo
-├── i18n-validate →  i18nstack/i18n-validate
 ├── localize-ja   →  i18nstack/localize-ja
 └── ... (46 localize skills)
 
 ~/.claude/commands/  (symlinks)
 ~/.grok/commands/    (Grok-native copies with tool-mapping header)
+
+~/.agents/skills/    (Codex adapter dirs: SKILL.md + agents/openai.yaml)
+~/.codex/prompts/    (Codex slash prompts for /i18n-wrap, /i18n-validate, …)
 ```
 
 ## The workflow
@@ -106,7 +115,7 @@ CLI tools: `npm uninstall -g @i18n-agent/i18n-convert @i18n-agent/i18n-pseudo @i
 
 ## Requirements
 
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) or [Grok](https://github.com/xai-org/grok-cli)
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code), [Grok](https://github.com/xai-org/grok-cli), or [Codex](https://github.com/openai/codex)
 - Node.js/npm (or Homebrew) for the CLI tools
 
 ## License
