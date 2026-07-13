@@ -2,15 +2,23 @@
 
 **i18nstack turns Claude Code into a full localization team: format engineer, QA tester, release gate, and 46 native-quality translators.**
 
-Three battle-tested CLI tools, five workflow slash commands, and 46 language-specific translation skills for [Claude Code](https://docs.anthropic.com/en/docs/claude-code), installed with one command.
+Three battle-tested CLI tools, five workflow slash commands, and 46 language-specific translation skills for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Grok](https://github.com/xai-org/grok-cli), installed with one command.
 
 ## Install
+
+**Claude Code**
 
 ```bash
 git clone --depth 1 https://github.com/i18n-agent/i18nstack.git ~/.claude/skills/i18nstack && ~/.claude/skills/i18nstack/setup
 ```
 
-That's it. The setup script installs the CLI tools (npm, with Homebrew fallback) and registers every skill with Claude Code.
+**Grok**
+
+```bash
+git clone --depth 1 https://github.com/i18n-agent/i18nstack.git ~/.grok/skills/i18nstack && ~/.grok/skills/i18nstack/setup
+```
+
+That's it. The setup script installs the CLI tools (npm, with Homebrew fallback) and registers every skill and slash command with your agent. Clone into either location — setup registers **both** Claude Code and Grok when their config directories exist.
 
 ## What's inside
 
@@ -40,10 +48,10 @@ Arabic (ar), Bulgarian (bg), Bengali (bn), Catalan (ca), Czech (cs), Welsh (cy),
 
 ## How it works
 
-The repo lives at `~/.claude/skills/i18nstack`. Setup symlinks each skill directory into `~/.claude/skills/`, so Claude Code discovers them automatically and a single `git pull` updates everything.
+Clone into `~/.claude/skills/i18nstack` or `~/.grok/skills/i18nstack`. Setup symlinks each skill directory into your agent's skills folder and wires up slash commands. A single `git pull` updates everything.
 
 ```
-~/.claude/skills/
+~/.claude/skills/  (or ~/.grok/skills/)
 ├── i18nstack/          ← this repo
 ├── i18n-convert  →  i18nstack/i18n-convert
 ├── i18n-pseudo   →  i18nstack/i18n-pseudo
@@ -51,12 +59,8 @@ The repo lives at `~/.claude/skills/i18nstack`. Setup symlinks each skill direct
 ├── localize-ja   →  i18nstack/localize-ja
 └── ... (46 localize skills)
 
-~/.claude/commands/
-├── i18n-wrap.md     →  ../skills/i18nstack/commands/i18n-wrap.md
-├── i18n-review.md   →  ../skills/i18nstack/commands/i18n-review.md
-├── i18n-validate.md →  ../skills/i18nstack/commands/i18n-validate.md
-├── i18n-convert.md  →  ../skills/i18nstack/commands/i18n-convert.md
-└── i18n-pseudo.md   →  ../skills/i18nstack/commands/i18n-pseudo.md
+~/.claude/commands/  (symlinks)
+~/.grok/commands/    (Grok-native copies with tool-mapping header)
 ```
 
 ## The workflow
@@ -87,15 +91,22 @@ cd ~/.claude/skills/i18nstack && git pull && ./setup
 ## Uninstalling
 
 ```bash
+# Claude Code
 cd ~/.claude/skills && find . -maxdepth 1 -type l -lname 'i18nstack/*' -delete && rm -rf i18nstack
 cd ~/.claude/commands && find . -maxdepth 1 -type l -lname '*skills/i18nstack/*' -delete
+
+# Grok (only removes files installed by i18nstack setup)
+cd ~/.grok/skills && find . -maxdepth 1 -type l -lname 'i18nstack/*' -delete && rm -rf i18nstack
+cd ~/.grok/commands && for f in i18n-wrap.md i18n-review.md i18n-validate.md i18n-convert.md i18n-pseudo.md; do
+  [ -f "$f" ] && grep -q 'i18nstack `setup`' "$f" 2>/dev/null && rm -f "$f"
+done
 ```
 
 CLI tools: `npm uninstall -g @i18n-agent/i18n-convert @i18n-agent/i18n-pseudo @i18n-agent/i18n-validate`
 
 ## Requirements
 
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code)
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) or [Grok](https://github.com/xai-org/grok-cli)
 - Node.js/npm (or Homebrew) for the CLI tools
 
 ## License

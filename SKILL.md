@@ -12,7 +12,7 @@ allowed-tools:
   - Read
 ---
 
-# i18nstack: the i18n toolkit for Claude Code
+# i18nstack: the i18n toolkit for Claude Code and Grok
 
 Three CLI tools + 46 language-specific translation skills. Route any i18n task
 to the right piece:
@@ -35,7 +35,11 @@ to the right piece:
 for t in i18n-convert i18n-pseudo i18n-validate; do command -v $t >/dev/null || echo "MISSING: $t"; done
 ```
 
-If anything is missing, run the stack's setup: `~/.claude/skills/i18nstack/setup`
+If anything is missing, run the stack's setup:
+
+- Claude: `~/.claude/skills/i18nstack/setup`
+- Grok: `~/.grok/skills/i18nstack/setup`
+
 (or `npm install -g @i18n-agent/<tool>`).
 
 ## Recommended workflow (new locale end to end)
@@ -61,5 +65,5 @@ production translation prompts — invoke the one matching your target language.
 ## Updating
 
 ```bash
-cd ~/.claude/skills/i18nstack && git pull && ./setup
+cd ~/.claude/skills/i18nstack && git pull && ./setup   # or ~/.grok/skills/i18nstack
 ```

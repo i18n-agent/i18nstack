@@ -1,13 +1,19 @@
 #!/usr/bin/env bash
-# i18nstack setup — install i18n CLI tools + register all skills with Claude Code
+# i18nstack setup — install i18n CLI tools + register skills/commands for Claude Code and Grok
 set -e
 
 STACK_DIR="$(cd "$(dirname "$0")" && pwd)"
-SKILLS_DIR="$(dirname "$STACK_DIR")"
+SKILLS_PARENT="$(dirname "$STACK_DIR")"
+AGENT_HOME="$(dirname "$SKILLS_PARENT")"
+AGENT_NAME="$(basename "$AGENT_HOME")"
+AGENT_ID="${AGENT_NAME#.}"  # .claude -> claude, .grok -> grok
 
 TOOLS=(i18n-convert i18n-pseudo i18n-validate)
+HEADER_MARKER="<!-- grok-claude-sync:"
+MARKER_FILE=".grok-claude-source.json"
 
-# 1. Install missing CLI tools (npm preferred, homebrew fallback)
+# --- CLI tools ---------------------------------------------------------------
+
 missing=()
 for t in "${TOOLS[@]}"; do
   command -v "$t" >/dev/null 2>&1 || missing+=("$t")
@@ -36,15 +42,107 @@ if [ ${#missing[@]} -gt 0 ]; then
   fi
 fi
 
-# 2. Register skills: symlink each skill dir into ~/.claude/skills
-#    (only when this repo is cloned inside a .claude/skills directory)
-if [ "$(basename "$SKILLS_DIR")" = "skills" ]; then
-  linked=()
-  skipped=()
+# --- agent registration helpers ----------------------------------------------
+
+grok_compat_header() {
+  local source="$1"
+  local kind="$2"
+  cat <<EOF
+${HEADER_MARKER} ${source} -->
+
+## Grok Compatibility
+
+Installed by i18nstack \`setup\`. Source: \`${source}\`.
+
+When following this ${kind} in Grok:
+
+1. Tool mapping from Claude Code:
+   - \`Read\` -> \`read_file\`
+   - \`Edit\`, \`Write\`, \`MultiEdit\` -> \`search_replace\` (and write tools as needed)
+   - \`Glob\`, \`Grep\`, \`LS\` -> \`list_dir\`, \`grep_search\`
+   - \`Bash\` -> \`bash\`
+   - \`TodoWrite\` -> \`todo_write\`
+   - \`Task\`, \`Agent\`, named subagents -> \`task\` tool (use \`--subagents\` for parallel child sessions)
+   - \`Skill(name)\` / \`\$name\` -> \`/name\` or read that skill's \`SKILL.md\`
+   - \`WebFetch\`, \`WebSearch\` -> \`web_fetch\`, \`web_search\`
+2. Placeholders: \`\$ARGUMENTS\` = all invocation args; \`\$1\` through \`\$9\` = positional args.
+3. Ignore Claude-only \`allowed-tools\` frontmatter when it conflicts with session permissions.
+4. Preserve safety instructions. Ask before destructive database, production, credential, deploy, or data-loss operations.
+
+---
+
+EOF
+}
+
+strip_grok_header() {
+  local file="$1"
+  python3 - "$file" <<'PY'
+import sys
+from pathlib import Path
+
+text = Path(sys.argv[1]).read_text(encoding="utf-8", errors="replace")
+marker = "<!-- grok-claude-sync:"
+if text.startswith(marker):
+    parts = text.split("---\n\n", 1)
+    if len(parts) == 2 and parts[1].lstrip().startswith("## Grok Compatibility"):
+        body = parts[1].split("\n---\n\n", 1)
+        if len(body) == 2:
+            text = body[1]
+print(text, end="")
+PY
+}
+
+write_marker() {
+  local target="$1"
+  local kind="$2"
+  local source="$3"
+  python3 - "$target" "$kind" "$source" <<'PY'
+import json, sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+target, kind, source = sys.argv[1:4]
+marker = {
+    "generator": "i18nstack/setup",
+    "kind": kind,
+    "source": source,
+    "updatedAt": datetime.now(timezone.utc).isoformat(),
+}
+path = Path(target) / ".grok-claude-source.json"
+path.write_text(json.dumps(marker, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+PY
+}
+
+ensure_stack_anchor() {
+  local agent_home="$1"
+  local skills_dir="$agent_home/skills"
+  local anchor="$skills_dir/i18nstack"
+
+  mkdir -p "$skills_dir"
+  if [ "$STACK_DIR" = "$anchor" ] || [ "$anchor" -ef "$STACK_DIR" ]; then
+    return 0
+  fi
+  if [ -L "$anchor" ] || [ ! -e "$anchor" ]; then
+    ln -snf "$STACK_DIR" "$anchor"
+    return 0
+  fi
+  echo "⚠ $anchor exists and is not managed by i18nstack — skipping $agent_home registration"
+  return 1
+}
+
+register_claude() {
+  local agent_home="$1"
+  local skills_dir="$agent_home/skills"
+  local commands_dir="$agent_home/commands"
+  local linked=() skipped=() linked_cmds=()
+
+  ensure_stack_anchor "$agent_home" || return 0
+  mkdir -p "$commands_dir"
+
   for skill_dir in "$STACK_DIR"/*/; do
     [ -f "$skill_dir/SKILL.md" ] || continue
     skill_name="$(basename "$skill_dir")"
-    target="$SKILLS_DIR/$skill_name"
+    target="$skills_dir/$skill_name"
     if [ -L "$target" ] || [ ! -e "$target" ]; then
       ln -snf "i18nstack/$skill_name" "$target"
       linked+=("$skill_name")
@@ -53,14 +151,10 @@ if [ "$(basename "$SKILLS_DIR")" = "skills" ]; then
     fi
   done
 
-  # 3. Register slash commands: symlink commands/*.md into ~/.claude/commands
-  COMMANDS_DIR="$(dirname "$SKILLS_DIR")/commands"
-  mkdir -p "$COMMANDS_DIR"
-  linked_cmds=()
   for cmd_file in "$STACK_DIR"/commands/*.md; do
     [ -f "$cmd_file" ] || continue
     cmd_name="$(basename "$cmd_file")"
-    target="$COMMANDS_DIR/$cmd_name"
+    target="$commands_dir/$cmd_name"
     if [ -L "$target" ] || [ ! -e "$target" ]; then
       ln -snf "../skills/i18nstack/commands/$cmd_name" "$target"
       linked_cmds+=("$cmd_name")
@@ -69,18 +163,81 @@ if [ "$(basename "$SKILLS_DIR")" = "skills" ]; then
     fi
   done
 
-  echo ""
-  echo "i18nstack ready."
+  echo "Claude Code ($agent_home):"
   echo "  linked skills: ${#linked[@]}"
   echo "  linked commands: ${#linked_cmds[@]}"
   if [ ${#skipped[@]} -gt 0 ]; then
-    echo "  skipped (a real file/dir already exists there): ${skipped[*]}"
-    echo "  To let i18nstack manage those, remove them and re-run ./setup"
+    echo "  skipped (already exists): ${skipped[*]}"
   fi
+}
+
+register_grok() {
+  local agent_home="$1"
+  local skills_dir="$agent_home/skills"
+  local commands_dir="$agent_home/commands"
+  local linked=() skipped=() linked_cmds=()
+
+  ensure_stack_anchor "$agent_home" || return 0
+  mkdir -p "$commands_dir"
+
+  for skill_dir in "$STACK_DIR"/*/; do
+    [ -f "$skill_dir/SKILL.md" ] || continue
+    skill_name="$(basename "$skill_dir")"
+    target="$skills_dir/$skill_name"
+    if [ -L "$target" ] || [ ! -e "$target" ]; then
+      ln -snf "i18nstack/$skill_name" "$target"
+      write_marker "$target" "skill-symlink" "$skill_dir/SKILL.md"
+      linked+=("$skill_name")
+    else
+      skipped+=("$skill_name")
+    fi
+  done
+
+  for cmd_file in "$STACK_DIR"/commands/*.md; do
+    [ -f "$cmd_file" ] || continue
+    cmd_name="$(basename "$cmd_file")"
+    target="$commands_dir/$cmd_name"
+    if [ -L "$target" ] || [ ! -e "$target" ]; then
+      {
+        grok_compat_header "$cmd_file" "command"
+        strip_grok_header "$cmd_file"
+      } >"$target"
+      linked_cmds+=("$cmd_name")
+    else
+      skipped+=("commands/$cmd_name")
+    fi
+  done
+
+  echo "Grok ($agent_home):"
+  echo "  linked skills: ${#linked[@]}"
+  echo "  installed commands: ${#linked_cmds[@]}"
+  if [ ${#skipped[@]} -gt 0 ]; then
+    echo "  skipped (already exists): ${skipped[*]}"
+  fi
+}
+
+# --- register with supported agents ------------------------------------------
+
+in_canonical_location=0
+if [ "$(basename "$SKILLS_PARENT")" = "skills" ] && { [ "$AGENT_ID" = "claude" ] || [ "$AGENT_ID" = "grok" ]; }; then
+  in_canonical_location=1
+fi
+
+if [ "$in_canonical_location" -eq 1 ]; then
+  echo ""
+  if [ -d "$HOME/.claude" ] || [ "$AGENT_ID" = "claude" ]; then
+    register_claude "$HOME/.claude"
+  fi
+  if [ -d "$HOME/.grok" ] || [ "$AGENT_ID" = "grok" ]; then
+    register_grok "$HOME/.grok"
+  fi
+  echo ""
+  echo "i18nstack ready."
 else
   echo ""
-  echo "i18nstack ready. (skipped skill symlinks — not cloned inside .claude/skills/)"
-  echo "  Recommended location: ~/.claude/skills/i18nstack"
+  echo "i18nstack ready. (skipped skill registration — not in ~/.claude/skills/ or ~/.grok/skills/)"
+  echo "  Claude: git clone --depth 1 https://github.com/i18n-agent/i18nstack.git ~/.claude/skills/i18nstack && ~/.claude/skills/i18nstack/setup"
+  echo "  Grok:   git clone --depth 1 https://github.com/i18n-agent/i18nstack.git ~/.grok/skills/i18nstack && ~/.grok/skills/i18nstack/setup"
 fi
 
 for t in "${TOOLS[@]}"; do
