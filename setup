@@ -140,8 +140,9 @@ register_claude() {
   mkdir -p "$commands_dir"
 
   for skill_dir in "$STACK_DIR"/*/; do
-    [ -f "$skill_dir/SKILL.md" ] || continue
     skill_name="$(basename "$skill_dir")"
+    [[ "$skill_name" == "skills" ]] && continue
+    [ -f "$skill_dir/SKILL.md" ] || continue
     target="$skills_dir/$skill_name"
     if [ -L "$target" ] || [ ! -e "$target" ]; then
       ln -snf "i18nstack/$skill_name" "$target"
@@ -181,8 +182,9 @@ register_grok() {
   mkdir -p "$commands_dir"
 
   for skill_dir in "$STACK_DIR"/*/; do
-    [ -f "$skill_dir/SKILL.md" ] || continue
     skill_name="$(basename "$skill_dir")"
+    [[ "$skill_name" == "skills" ]] && continue
+    [ -f "$skill_dir/SKILL.md" ] || continue
     target="$skills_dir/$skill_name"
     if [ -L "$target" ] || [ ! -e "$target" ]; then
       ln -snf "i18nstack/$skill_name" "$target"
@@ -259,6 +261,10 @@ else
   echo "  Claude: git clone --depth 1 https://github.com/i18n-agent/i18nstack.git ~/.claude/skills/i18nstack && ~/.claude/skills/i18nstack/setup"
   echo "  Grok:   git clone --depth 1 https://github.com/i18n-agent/i18nstack.git ~/.grok/skills/i18nstack && ~/.grok/skills/i18nstack/setup"
   echo "  Codex:  git clone --depth 1 https://github.com/i18n-agent/i18nstack.git ~/.codex/i18nstack && ~/.codex/i18nstack/setup"
+fi
+
+if [ -x "$STACK_DIR/scripts/sync-skills-catalog.sh" ]; then
+  "$STACK_DIR/scripts/sync-skills-catalog.sh" >/dev/null
 fi
 
 for t in "${TOOLS[@]}"; do

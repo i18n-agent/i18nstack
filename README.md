@@ -1,10 +1,40 @@
 # i18nstack
 
-**i18nstack turns Claude Code into a full localization team: format engineer, QA tester, release gate, and 46 native-quality translators.**
+[![skills.sh](https://skills.sh/b/i18n-agent/i18nstack)](https://skills.sh/i18n-agent/i18nstack)
+
+**i18nstack turns AI coding agents into a full localization team: format engineer, QA tester, release gate, and 46 native-quality translators.**
 
 Three battle-tested CLI tools, five workflow slash commands, and 46 language-specific translation skills for [Claude Code](https://docs.anthropic.com/en/docs/claude-code), [Grok](https://github.com/xai-org/grok-cli), and [Codex](https://github.com/openai/codex), installed with one command.
 
 ## Install
+
+### skills.sh (any supported agent)
+
+Install all 55 skills via [skills.sh](https://skills.sh/) / [vercel-labs/skills](https://github.com/vercel-labs/skills):
+
+```bash
+npx skills add i18n-agent/i18nstack -g -y
+```
+
+Install a subset:
+
+```bash
+npx skills add i18n-agent/i18nstack -g -y --skill localize-ja --skill i18n-validate
+```
+
+List available skills without installing:
+
+```bash
+npx skills add i18n-agent/i18nstack --list
+```
+
+skills.sh installs skill definitions only. For the CLI tools (`i18n-convert`, `i18n-pseudo`, `i18n-validate`) and slash commands (`/i18n-wrap`, `/i18n-review`, …), run setup after cloning:
+
+```bash
+git clone --depth 1 https://github.com/i18n-agent/i18nstack.git ~/.claude/skills/i18nstack && ~/.claude/skills/i18nstack/setup
+```
+
+### Direct install (recommended)
 
 **Claude Code**
 

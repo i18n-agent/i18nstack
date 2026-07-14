@@ -1,18 +1,9 @@
 ---
 name: i18nstack
-description: |
-  Complete i18n/localization toolkit for Claude Code. Use when doing ANY
-  internationalization work: converting localization files between 32 formats
-  (i18n-convert), pseudo-translating files to QA an i18n implementation
-  (i18n-pseudo), validating translation files for missing keys / placeholder
-  drift / plural errors (i18n-validate), or translating UI strings, marketing
-  copy, and docs into 46 languages with native-quality rules (localize-*).
-allowed-tools:
-  - Bash
-  - Read
+description: "|"
 ---
 
-# i18nstack: the i18n toolkit for Claude Code, Grok, and Codex
+# i18nstack: the i18n toolkit for AI coding agents
 
 Three CLI tools + 46 language-specific translation skills. Route any i18n task
 to the right piece:
@@ -23,11 +14,11 @@ to the right piece:
 | Generate pseudo-translations to test an i18n setup | `i18n-pseudo` CLI (see `i18n-pseudo` skill) |
 | Check translation files for missing keys, placeholder drift, plural errors | `i18n-validate` CLI (see `i18n-validate` skill) |
 | Translate text into language XX with native-quality rules | `localize-XX` skill (46 languages, e.g. `localize-ja`, `localize-de`) |
-| Wrap hardcoded strings in code with i18n functions | `/i18n-wrap` command |
-| Audit existing i18n wrapping for quality issues | `/i18n-review` command |
-| Validate AND fix all findings until green | `/i18n-validate` command |
-| Safe format conversion with data-loss checks | `/i18n-convert` command |
-| Pseudo-locale QA sweep with fix-up | `/i18n-pseudo` command |
+| Wrap hardcoded strings in code with i18n functions | `i18n-wrap` skill |
+| Audit existing i18n wrapping for quality issues | `i18n-review` skill |
+| Validate AND fix all findings until green | `i18n-validate-workflow` skill |
+| Safe format conversion with data-loss checks | `i18n-convert-workflow` skill |
+| Pseudo-locale QA sweep with fix-up | `i18n-pseudo-workflow` skill |
 
 ## Setup check (run BEFORE using any CLI)
 
@@ -35,13 +26,13 @@ to the right piece:
 for t in i18n-convert i18n-pseudo i18n-validate; do command -v $t >/dev/null || echo "MISSING: $t"; done
 ```
 
-If anything is missing, run the stack's setup:
+If anything is missing:
 
-- Claude: `~/.claude/skills/i18nstack/setup`
-- Grok: `~/.grok/skills/i18nstack/setup`
-- Codex: `~/.codex/i18nstack/setup`
+```bash
+npm install -g @i18n-agent/i18n-convert @i18n-agent/i18n-pseudo @i18n-agent/i18n-validate
+```
 
-(or `npm install -g @i18n-agent/<tool>`).
+Or run full agent wiring: `npx skills add i18n-agent/i18nstack -g -y --skill '*'` then `./setup`.
 
 ## Recommended workflow (new locale end to end)
 

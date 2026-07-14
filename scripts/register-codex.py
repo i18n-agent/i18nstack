@@ -272,10 +272,7 @@ def main() -> int:
     codex_prompts.mkdir(parents=True, exist_ok=True)
 
     counts = {"skills": 0, "commands": 0, "skipped_skills": 0, "skipped_commands": 0}
-    skip_dirs = {"commands", "scripts", ".git"}
-
-    if (stack_dir / "SKILL.md").is_file():
-        register_skill(stack_dir, stack_dir, codex_skills, counts)
+    skip_dirs = {"commands", "scripts", "skills", ".git"}
 
     for skill_dir in sorted(stack_dir.iterdir()):
         if skill_dir.is_dir() and skill_dir.name not in skip_dirs:
