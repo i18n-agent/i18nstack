@@ -1,6 +1,6 @@
 ---
 name: localize-it
-description: Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Italian (it). Enforces Lei/tu consistency, le/la/lo gender + number agreement, article contractions (al, del, nel), conjunction `e → ed` before vowels starting with `e`, subjunctive after doubt/necessity, postnominal adjectives, anglicism-verb avoidance (caricare not uploadare), and `Senza X` marketing patterns over English `Zero X` calques.
+description: Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Italian (it). Enforces Lei/tu consistency, le/la/lo gender + number agreement, article contractions (al, del, nel), e→ed before e-vowels, subjunctive after doubt/necessity, postnominal adjectives, anglicism-verb avoidance (caricare not uploadare), and `Senza X` patterns over English `Zero X` calques.
 ---
 
 # Italian Translation Rules (it / italiano)

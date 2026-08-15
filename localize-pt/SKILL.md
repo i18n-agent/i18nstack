@@ -1,6 +1,6 @@
 ---
 name: localize-pt
-description: Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Portuguese (pt). Asks the user to choose between Brazilian (pt-BR) and European (pt-PT) on first use, then enforces variant-specific verb construction (gerund vs a+infinitivo), pronoun placement (proclisis vs enclisis), article+possessive rules, vocabulary, AO90 orthography, and currency.
+description: Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Portuguese (pt). Asks the user to choose Brazilian (pt-BR) or European (pt-PT) on first use, then enforces variant-specific verb construction (gerund vs a+infinitivo), pronoun placement (proclisis vs enclisis), article+possessive rules, vocabulary, AO90 orthography, and currency.
 ---
 
 # Portuguese Translation Rules (pt / Português)

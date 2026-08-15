@@ -1,6 +1,6 @@
 ---
 name: localize-sr
-description: Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Serbian (sr / sr-Cyrl / sr-Latn). Asks the user to choose Cyrillic (ћирилица) vs Latin (latinica) on first use — both are official, equal, fully interchangeable, but MUST NOT mix within one text. Enforces ekavian forms (vreme not vrijeme), 7-case grammar, 3-gender agreement, ICU one/few/other plurals (1/2-4/5+ pattern), perfective/imperfective verb aspect, Vi/ti formality, clitic second-position (Wackernagel's law), `da + present` construction, technical-identifier Latin preservation inside Cyrillic text, glagolski prilog sadašnji (-ći) for simultaneous actions, and verb-construction integrity (no stacked finite verbs from English -ing calques).
+description: Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Serbian (sr / sr-Cyrl / sr-Latn). Asks the user to choose Cyrillic vs Latin on first use (both official, never mixed in one text). Enforces ekavian forms (vreme not vrijeme), 7-case grammar, 3-gender agreement, ICU one/few/other plurals, perfective/imperfective aspect, Vi/ti formality, clitic second-position, `da + present` construction, and Latin tech identifiers preserved inside Cyrillic.
 ---
 
 # Translate to Serbian (sr) — High-Fidelity Skill

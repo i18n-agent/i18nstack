@@ -1,6 +1,6 @@
 ---
 name: localize-es
-description: Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Spanish (es). Asks the user to choose the regional variant (es-ES Spain, es-419 Latin American neutral, or es-MX Mexico) on first use, then enforces variant-specific formality (vosotros vs ustedes), vocabulary (ordenador vs computadora), tense system (pretérito perfecto vs indefinido), currency, and idiom rules.
+description: Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Spanish (es). Asks the user to choose the variant (es-ES Spain, es-419 Latin American neutral, or es-MX Mexico) on first use, then enforces variant-specific formality (vosotros vs ustedes), vocabulary (ordenador vs computadora), tense system, currency, and idiom rules.
 ---
 
 # Spanish Translation Rules (es / Español)

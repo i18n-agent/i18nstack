@@ -1,6 +1,6 @@
 ---
 name: localize-hr
-description: Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Croatian (hr). Enforces IJEKAVIAN forms (vrijeme, lijepo, mlijeko — NEVER Serbian ekavian), 7-case grammar, 3-gender agreement, ICU one/few/other plurals (1/2-4/5+ with 11-14 exception), perfective/imperfective verb aspect, Vi/ti formality consistency (Vaš capitalized), Latin script ONLY (Croatian never uses Cyrillic), Croatian-specific terminology (računalo, tipkovnica, zaslon, mapa) over Serbian/anglicism alternatives, clitic second-position (Wackernagel's law), verb-construction integrity with glagolski prilog sadašnji (-ći), and EUR currency since 2023 (formerly HRK).
+description: Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Croatian (hr). Enforces ijekavian forms (vrijeme, mlijeko — never Serbian ekavian), 7-case grammar, 3-gender agreement, ICU one/few/other plurals, perfective/imperfective aspect, Vi/ti formality, Latin script only (never Cyrillic), Croatian terminology (računalo, tipkovnica, zaslon) over Serbian/anglicisms, clitic second-position, and EUR since 2023.
 ---
 
 # Translate to Croatian (hr) — High-Fidelity Skill

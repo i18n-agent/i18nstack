@@ -1,6 +1,6 @@
 ---
 name: localize-lt
-description: Use when translating UI strings, marketing copy, blogs, docs, error messages, or any product text (originally in any source language) into Lithuanian (Lietuvių kalba) for Lithuania. Covers 7-case grammar including vocative, 2-gender agreement (-as/-is/-us/-ys masc, -a/-ė fem), definite/indefinite adjectives (naujas vs naujasis), Jūs/tu formality, ogonek + dot preservation (ą č ę ė į š ų ū ž — ė is uniquely Lithuanian), accusative-of-duration (6 metus NOT 6 metų), prieš + padalyvis construction, German-style quotes „...", ISO YYYY-MM-DD dates, EUR currency (since 2015), comma decimal + space thousands (1 234,56 €), ICU plurals (one=nom.sg failas / few=nom.pl failai / many=gen.pl failų / other=gen.sg failo), the kuris/kuri relative pronoun agreement, and Baltic-not-Slavic identity. Lithuanian is one of the most archaic Indo-European languages — close sibling of Latvian but distinctly NOT Slavic and NOT Latvian.
+description: Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Lithuanian (Lietuvių). Baltic, NOT Slavic or Latvian. Enforces 7-case grammar with vocative, 2-gender agreement, definite/indefinite adjectives (naujas vs naujasis), Jūs/tu formality, ogonek+dot letters (ą č ę ė į š ų ū ž), accusative-of-duration, „…“ quotes, ISO YYYY-MM-DD, EUR (1 234,56 €), and ICU plurals (one=failas/few=failai/many=failų/other=failo).
 ---
 
 # Localize: Lithuanian (lt → Lietuvių)
