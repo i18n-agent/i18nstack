@@ -113,6 +113,28 @@ path.write_text(json.dumps(marker, indent=2, sort_keys=True) + "\n", encoding="u
 PY
 }
 
+ensure_stack_entrypoint() {
+  local source="$STACK_DIR/i18nstack/SKILL.md"
+  local target="$STACK_DIR/SKILL.md"
+  local relative_source="i18nstack/SKILL.md"
+
+  if [ ! -f "$source" ]; then
+    echo "⚠ i18nstack umbrella skill missing: $source"
+    return 1
+  fi
+
+  # skills.sh discovery requires the umbrella skill to live in its own
+  # directory in the repository. Direct agent installs, however, use the
+  # repository root as the i18nstack package anchor and expect SKILL.md there.
+  # Keep the root entrypoint generated and gitignored so both layouts work.
+  if [ -L "$target" ] || [ ! -e "$target" ]; then
+    ln -snf "$relative_source" "$target"
+  elif ! cmp -s "$source" "$target"; then
+    echo "⚠ $target exists and differs from $source — refusing to overwrite it"
+    return 1
+  fi
+}
+
 ensure_stack_anchor() {
   local agent_home="$1"
   local skills_dir="$agent_home/skills"
@@ -141,7 +163,7 @@ register_claude() {
 
   for skill_dir in "$STACK_DIR"/*/; do
     skill_name="$(basename "$skill_dir")"
-    [[ "$skill_name" == "skills" ]] && continue
+    [[ "$skill_name" == "skills" || "$skill_name" == "i18nstack" ]] && continue
     [ -f "$skill_dir/SKILL.md" ] || continue
     target="$skills_dir/$skill_name"
     if [ -L "$target" ] || [ ! -e "$target" ]; then
@@ -183,7 +205,7 @@ register_grok() {
 
   for skill_dir in "$STACK_DIR"/*/; do
     skill_name="$(basename "$skill_dir")"
-    [[ "$skill_name" == "skills" ]] && continue
+    [[ "$skill_name" == "skills" || "$skill_name" == "i18nstack" ]] && continue
     [ -f "$skill_dir/SKILL.md" ] || continue
     target="$skills_dir/$skill_name"
     if [ -L "$target" ] || [ ! -e "$target" ]; then
@@ -228,6 +250,8 @@ register_codex() {
 }
 
 # --- register with supported agents ------------------------------------------
+
+ensure_stack_entrypoint
 
 in_canonical_location=0
 stack_name="$(basename "$STACK_DIR")"

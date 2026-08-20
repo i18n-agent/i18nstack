@@ -1,6 +1,6 @@
 ---
 name: localize-el
-description: "Use when translating or localizing UI strings, marketing copy, blogs, documentation, error messages, or any product text into Greek (el / Ελληνικά). Enforces monotonic accent system (only acute ´ since 1982), final sigma ς only at word end, 3-gender × 4-case agreement (ο/η/το × nom/gen/acc/voc), Greek question mark ; (NOT ?) and ano teleia · (NOT period), εσείς/εσύ formality consistency, verb government (μετατρέπω+σε+acc, εξαρτώμαι+από+acc), article contractions (σε+τον=στον), «...» guillemet quotation marks, EUR currency 99,99 €, DD/MM/YYYY dates, ICU one/other plurals, and preservation of Latin-script technical identifiers (Git, API, JSON) inside Greek text."
+description: "Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Greek (el / Ελληνικά). Enforces the monotonic accent system (acute only), final sigma ς at word end, 3-gender × 4-case agreement, Greek question mark ; and ano teleia ·, εσείς/εσύ formality, verb government (μετατρέπω+σε), article contractions (σε+τον=στον), «…» quotes, EUR 99,99 €, DD/MM/YYYY, ICU one/other plurals, and Latin-script tech identifiers preserved inside Greek."
 ---
 
 # Localize: Greek (el → Ελληνικά)

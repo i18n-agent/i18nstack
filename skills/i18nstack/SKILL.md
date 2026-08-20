@@ -1,6 +1,6 @@
 ---
 name: i18nstack
-description: "|"
+description: "Complete i18n/localization toolkit for AI coding agents. Use when doing ANY internationalization work: converting localization files between 32 formats (i18n-convert), pseudo-translating files to QA an i18n implementation (i18n-pseudo), validating translation files for missing keys / placeholder drift / plural errors (i18n-validate), or translating UI strings, marketing copy, and docs into 46 languages with native-quality rules (localize-*)."
 ---
 
 # i18nstack: the i18n toolkit for AI coding agents

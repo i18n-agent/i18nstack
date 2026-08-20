@@ -1,6 +1,6 @@
 ---
 name: localize-cs
-description: "Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Czech (cs). Czech is NOT Slovak — enforces Czech-specific vocabulary (soubor not súbor, uživatel not používateľ, složka not zložka, nastavení not nastavenia, prohlížeč not prehliadač), Czech letters ě ř ů, 7-case grammar (with vocative — unlike Slovak's 6), 3-gender system with masculine animate/inanimate split, ICU one/few/other plurals (1/2-4/0+5+ with 11-14 going to other), perfective/imperfective verb aspect, Vy/ty formality (Vy capitalized), clitic second-position rule, impersonal voice for status (Probíhá výpočet / Počítá se, NEVER first-person Počítám), neuter perfective participle for completion (Uloženo, Načteno), \"Nepodařilo se\" + infinitive for failure, infinitive buttons (Uložit), and CZK koruna currency (1 234,56 Kč — Czechia did NOT adopt euro)."
+description: "Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Czech (cs). Czech is NOT Slovak — enforces Czech vocabulary (soubor, uživatel, složka), letters ě ř ů, 7-case grammar with vocative, 3 genders with animate/inanimate split, ICU one/few/other plurals, perfective/imperfective aspect, Vy/ty formality, impersonal status voice (never first-person Počítám), neuter perfective participle for completion (Uloženo), infinitive buttons, and CZK (1 234,56 Kč)."
 ---
 
 # Translate to Czech (cs) — High-Fidelity Skill

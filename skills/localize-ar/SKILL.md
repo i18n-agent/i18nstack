@@ -1,6 +1,6 @@
 ---
 name: localize-ar
-description: "Use when translating or localizing source text into Arabic (ar / MSA / ar-SA / ar-EG / ar-AE / ar-LB / ar-MA). Covers RTL handling, ICU zero/one/two/few/many/other plurals, dual number, masculine/feminine gender, non-human plural = feminine singular, sun/moon letters, idafa construct, Arabic punctuation (؟ ، ؛), bidirectional text, religious/Islamic sensitivity, MSA vs regional dialects, and register auto-detection (formal أنت default, حضرتك for very formal)."
+description: "Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Arabic (ar / MSA / ar-SA / ar-EG / ar-AE / ar-LB / ar-MA). Enforces RTL with LTR-embedded tech identifiers, ICU zero/one/two/few/many/other plurals, dual number, masc/fem agreement (non-human plural = feminine singular), sun/moon letters, idafa construct, Arabic punctuation ؟ ، ؛, Islamic sensitivity, and formal أنت register by default."
 ---
 
 # Translate to Arabic (ar) — High-Fidelity Skill

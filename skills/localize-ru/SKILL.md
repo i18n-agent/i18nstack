@@ -1,6 +1,6 @@
 ---
 name: localize-ru
-description: "Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Russian (ru). Enforces the 6-case system, 3-gender agreement, ICU plural one/few/many (1/2-4/5+ pattern), perfective vs imperfective verb aspect, ты/Вы formality consistency (Вы always capitalized), «ёлочки» quotation marks, infinitive button labels, impersonal status messages, and preservation of Latin-script technical identifiers (Git, API, JSON) inside Cyrillic text."
+description: "Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Russian (ru). Enforces the 6-case system, 3-gender agreement, ICU one/few/many plurals (1/2-4/5+), perfective vs imperfective aspect, ты/Вы formality (Вы capitalized), «ёлочки» quotes, infinitive button labels, impersonal status messages, and Latin-script tech identifiers preserved inside Cyrillic."
 ---
 
 # Russian Translation Rules (ru / русский язык)

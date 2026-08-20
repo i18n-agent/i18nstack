@@ -1,6 +1,6 @@
 ---
 name: localize-uk
-description: "Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Ukrainian (uk). Ukrainian is NOT Russian — enforces Ukrainian identity (letters і/ї/є/ґ, vocabulary наразі/також/власний/друкувати, NOT Russian сейчас/тоже/собственный/печатать), 7-case grammar with active vocative (Олександре!, користувачу!), 3-gender agreement, ICU one/few/many/other plurals (1/2-4/5-20+ with 11-14 exception), perfective/imperfective verb aspect, Ви/ти formality consistency (Ви capitalized), apostrophe usage (комп'ютер, об'єкт, п'ять), Latin tech identifiers (Git, API, JSON) inside Cyrillic, diiepryslivnyk (-чи) for simultaneous actions, false-friend awareness (збуджений has sexual connotation — use захоплений / в захваті for \"excited\"), and «ялинки» quotation marks."
+description: "Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Ukrainian (uk). Ukrainian is NOT Russian — enforces Ukrainian letters і/ї/є/ґ and vocabulary (наразі/також/друкувати not Russian сейчас/тоже/печатать), 7-case grammar with active vocative (користувачу!), 3-gender agreement, ICU one/few/many/other plurals, perfective/imperfective aspect, Ви/ти formality, apostrophe usage (комп'ютер, п'ять), Latin tech identifiers inside Cyrillic, false-friend awareness (збуджений is sexual — use захоплений), and «ялинки» quotes."
 ---
 
 # Translate to Ukrainian (uk) — High-Fidelity Skill

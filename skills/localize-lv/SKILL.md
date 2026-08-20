@@ -1,6 +1,6 @@
 ---
 name: localize-lv
-description: "Use when translating UI strings, marketing copy, blogs, docs, error messages, or any product text (originally in any source language) into Latvian (Latviešu valoda) for Latvia. Covers 6-case grammar (no vocative), 2-gender agreement (-s/-š/-is masc, -a/-e fem), definite/indefinite adjectives (jauns vs jaunais), Jūs/tu formality with register auto-detection from source tone, macron + cedilla preservation (ā č ē ģ ī ķ ļ ņ š ū ž), reflexive -ties verbs, German-style quotes „...\", DD.MM.YYYY dates, EUR currency (since 2014), comma decimal + space thousands (1 234,56 €), ICU plurals (zero=gen.pl failu / one=nom.sg fails / other=nom.pl faili), the colloquial \"priekš\" warning (use dative instead), and Baltic-not-Slavic identity. Latvian is a Baltic language — close sibling of Lithuanian but distinctly NOT Slavic and NOT Lithuanian."
+description: "Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Latvian (Latviešu). Baltic, NOT Slavic or Lithuanian. Enforces 6-case grammar (no vocative), 2-gender agreement, definite/indefinite adjectives (jauns vs jaunais), Jūs/tu formality with register auto-detection, macron+cedilla letters (ā č ē ģ ī ķ ļ ņ š ū ž), reflexive -ties verbs, „…“ quotes, DD.MM.YYYY, EUR (1 234,56 €), the „priekš“ warning (use dative), and ICU plurals (zero=failu/one=fails/other=faili)."
 ---
 
 # Localize: Latvian (lv → Latviešu)

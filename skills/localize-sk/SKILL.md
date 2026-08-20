@@ -1,6 +1,6 @@
 ---
 name: localize-sk
-description: "Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Slovak (sk). Slovak is NOT Czech — enforces Slovak-specific vocabulary (súbor not soubor, používateľ not uživatel, zložka/priečinok not složka, nastavenia not nastavení, prehliadač not prohlížeč), 6-case grammar (vocative merged into nominative — unlike Croatian/Russian), 3-gender system with masculine animate/inanimate split, ICU one/few/many/other plurals (1/2-4/fractions/0+5+), standard past participle endings (vybraný not dialectal vybratý), rhythmic law (rytmický zákon — no consecutive long syllables), Slovak diacritics (ľ ĺ ŕ ô ä unique to Slovak), Vy/ty formality (Vy capitalized), impersonal voice for status messages (Počíta sa..., NOT first-person Počítam...), gerundive stiffness avoidance (na organizáciu not na organizovanie), and EUR currency with `1 234,56 €` formatting."
+description: "Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Slovak (sk). Slovak is NOT Czech — enforces Slovak vocabulary (súbor, používateľ, priečinok), 6-case grammar (vocative merged), 3 genders with animate/inanimate split, ICU one/few/many/other plurals, standard participle endings, the rhythmic law (no consecutive long syllables), Slovak diacritics (ľ ŕ ô ä), Vy/ty formality, impersonal status voice (Počíta sa…, not Počítam), and EUR (1 234,56 €)."
 ---
 
 # Translate to Slovak (sk) — High-Fidelity Skill
