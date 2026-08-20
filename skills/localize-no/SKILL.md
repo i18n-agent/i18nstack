@@ -1,6 +1,6 @@
 ---
 name: localize-no
-description: "Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Norwegian (no / nb Bokmål / nn Nynorsk). Asks the user to choose between Bokmål (~85% of users, default for `no`) and Nynorsk (~15%, structurally distinct written standard) on first use, then enforces variant-specific vocabulary (jeg/eg, ikke/ikkje, hva/kva, hvordan/korleis), 3-gender system (en/ei/et) with feminine-optional rule, V2 word order, outward guillemets «...», DD.MM.YYYY dates, comma decimals with space thousands, du-form universality (De is archaic), hybrid-compound verb rejection (no avlinke), and source-register matching."
+description: "Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Norwegian (no / nb Bokmål / nn Nynorsk). Asks the user to choose Bokmål (~85%, default) or Nynorsk on first use, then enforces variant vocabulary (jeg/eg, ikke/ikkje, hva/kva), 3-gender system (en/ei/et), V2 word order, «…» quotes, DD.MM.YYYY, comma decimals, universal du-form, hybrid-compound verb rejection, and source-register matching."
 ---
 
 # Translate to Norwegian (no) — High-Fidelity Skill

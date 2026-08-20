@@ -1,6 +1,6 @@
 ---
 name: localize-sl
-description: "Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Slovenian (sl). Slovenian's defining feature is the DUAL number — exactly 2 items takes a third grammatical number distinct from singular and plural (2 datoteki, NOT 2 datoteke; sta delala, NOT so delali). Enforces dual + ICU one/two/few/other plurals (1 / 2 dual / 3-4 / 0+5+), 6-case grammar, 3-gender agreement, Vi/ti formality (Vi capitalized), perfective/imperfective verb aspect, impersonal voice for status (Poteka analiza / se izračunava, NOT first-person Računam), neuter perfective participle for completion (Shranjeno, Naloženo), \"Ni uspelo\" + infinitive for failure, \"Samodejno\" not \"Avto-\" prefix, native Slovenian terminology (uporabnik, datoteka, mapa, brskalnik), and EUR currency with `1.234,56 €`."
+description: "Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Slovenian (sl). Slovenian's defining feature is the DUAL number — exactly 2 items take a third grammatical number (2 datoteki). Enforces dual + ICU one/two/few/other plurals, 6-case grammar, 3-gender agreement, Vi/ti formality, perfective/imperfective aspect, impersonal status voice (not first-person Računam), neuter perfective participle (Shranjeno), „Samodejno“ not „Avto-“, native terminology (uporabnik, datoteka, mapa), and EUR (1.234,56 €)."
 ---
 
 # Translate to Slovenian (sl) — High-Fidelity Skill

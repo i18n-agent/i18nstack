@@ -1,6 +1,6 @@
 ---
 name: i18n-convert
-description: "|"
+description: "Use when converting localization/translation files between formats — JSON, i18next, Flutter ARB, Android XML, iOS .strings/.stringsdict/String Catalog, XLIFF 1.2/2.0, Gettext PO, YAML (Rails/plain), PHP/Laravel, .NET RESX, Java Properties, CSV, Excel, TOML, TMX, SRT, and more (32 formats total). Wraps the i18n-convert CLI."
 ---
 
 # i18n-convert: localization file format converter

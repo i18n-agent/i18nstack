@@ -38,15 +38,40 @@ def parse_frontmatter(text: str) -> tuple[dict[str, str], str]:
     match = FRONTMATTER_RE.match(text)
     if not match:
         return {}, text
+
     meta: dict[str, str] = {}
-    for line in match.group(1).splitlines():
-        if ":" not in line:
+    lines = match.group(1).splitlines()
+    supported_keys = {"name", "description", "argument-hint"}
+    block_scalars = {"|", "|-", "|+", ">", ">-", ">+"}
+    index = 0
+
+    while index < len(lines):
+        line = lines[index]
+        index += 1
+        if line[:1].isspace() or ":" not in line:
             continue
+
         key, value = line.split(":", 1)
         key = key.strip()
-        value = value.strip().strip("\"'")
-        if key in {"name", "description", "argument-hint"}:
+        if key not in supported_keys:
+            continue
+
+        value = value.strip()
+        if value in block_scalars:
+            block_lines: list[str] = []
+            while index < len(lines):
+                continuation = lines[index]
+                if continuation.strip() and not continuation[:1].isspace():
+                    break
+                index += 1
+                if continuation.strip():
+                    block_lines.append(continuation.strip())
+            meta[key] = " ".join(block_lines)
+        elif len(value) >= 2 and value[0] == value[-1] and value[0] in {"\"", "'"}:
+            meta[key] = value[1:-1]
+        else:
             meta[key] = value
+
     return meta, text[match.end() :]
 
 

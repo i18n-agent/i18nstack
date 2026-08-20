@@ -1,6 +1,6 @@
 ---
 name: localize-sv
-description: "Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Swedish (sv / sv-SE / sv-FI). Enforces två genus (en/ett) agreement, V2 word order with subordinate-clause inversion, double definiteness (den stora filen), compound-word integrity (särskrivning is a critical error), du-form universality post-du-reform (ni is archaic), fler/mer countable/uncountable distinction, s-passive, ISO 8601 dates (YYYY-MM-DD), comma decimals with space thousands, å/ä/ö preservation, hybrid-compound verb rejection (no avlinka, avsynca), and register auto-detection from source."
+description: "Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Swedish (sv / sv-SE / sv-FI). Enforces två genus (en/ett) agreement, V2 word order with subordinate-clause inversion, double definiteness (den stora filen), compound-word integrity (särskrivning is a critical error), universal du-form (ni archaic), fler/mer countable/uncountable distinction, s-passive, ISO 8601 dates, comma decimals with space thousands, å/ä/ö, hybrid-compound verb rejection (avlänka not avlinka), and source-register matching."
 ---
 
 # Translate to Swedish (sv) — High-Fidelity Skill

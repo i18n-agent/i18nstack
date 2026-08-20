@@ -58,6 +58,11 @@ That's it. The setup script installs the CLI tools (npm, with Homebrew fallback)
 
 Codex uses a different skill format than Claude/Grok: setup writes adapter skills to `~/.agents/skills/` and slash prompts to `~/.codex/prompts/`, each pointing back to the native i18nstack source files.
 
+`setup` also creates a gitignored root `SKILL.md` entrypoint that points to
+`i18nstack/SKILL.md`. The separate directory is required for skills.sh
+discovery, while the root entrypoint lets a direct clone act as the shared
+Claude/Grok package anchor without colliding with the umbrella skill name.
+
 ## What's inside
 
 ### CLI tools (installed globally)

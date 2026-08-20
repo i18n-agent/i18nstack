@@ -1,6 +1,6 @@
 ---
 name: localize-da
-description: "Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Danish (da). Enforces to genus (en/et) agreement, V2 word order with subordinate-clause inversion, double definiteness with adjective (det store hus), compound-word integrity (skrive sammen — separation is særskrivning error), du-form universality (De archaic), hybrid-compound verb rejection (no aflinke, afsynce — use frakoble, synkronisere), comma rules (no comma before eller/og, comma before men/at/når/fordi), present-tense status messages (Gemmer..., Indlæser...), æ/ø/å preservation, DKK currency (99,99 kr.), DD-MM-YYYY dates, and source-register matching."
+description: "Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Danish (da). Enforces to genus (en/et) agreement, V2 word order with subordinate-clause inversion, double definiteness (det store hus), compound-word integrity (særskrivning is an error), universal du-form (De archaic), hybrid-compound verb rejection (frakoble not aflinke), comma rules, present-tense status (Gemmer…), æ/ø/å, DKK (99,99 kr.), DD-MM-YYYY, and source-register matching."
 ---
 
 # Translate to Danish (da) — High-Fidelity Skill

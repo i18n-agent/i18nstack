@@ -1,6 +1,6 @@
 ---
 name: i18n-validate
-description: "|"
+description: "Use when checking translation/locale files for consistency — missing keys, extra keys, placeholder mismatches, malformed or CLDR-incomplete plurals, parse errors, empty or untranslated values — across 32 file formats. Also use in CI (JUnit/JSON output, meaningful exit codes). Wraps the i18n-validate CLI."
 ---
 
 # i18n-validate: translation file consistency checker

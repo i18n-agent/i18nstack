@@ -1,6 +1,6 @@
 ---
 name: localize-he
-description: "Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Hebrew (he / iw). RTL Semitic language — enforces right-to-left direction with LTR-embedded Latin tech identifiers, two-gender agreement (-ה masculine vs feminine), construct state (סמיכות) over של compound forms, opposite-gender numerals 1-10, ICU one/two/other plurals, definiteness agreement (both noun and adjective need ה), gender-neutral UI patterns (infinitive ללחוץ or plural לחצו over gendered singular), and CRITICAL Jewish religious sensitivity (rewrite Christian/biblical idioms — cross to bear, holy grail, good Samaritan, act of God; adapt non-kosher metaphors — bacon, champagne; soften superstition; respect Shabbat / Hebrew calendar)."
+description: "Use when translating or localizing UI strings, marketing copy, documentation, or any source text into Hebrew (he / iw). RTL Semitic — enforces right-to-left with LTR-embedded tech identifiers, two-gender agreement, construct state (סמיכות) over של, opposite-gender numerals 1-10, ICU one/two/other plurals, definiteness agreement, gender-neutral UI (infinitive ללחוץ or plural), and Jewish religious sensitivity (rewrite Christian/biblical idioms, adapt non-kosher metaphors, respect Shabbat/Hebrew calendar)."
 ---
 
 # Translate to Hebrew (he / iw) — High-Fidelity Skill
