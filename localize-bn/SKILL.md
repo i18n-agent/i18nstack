@@ -904,8 +904,8 @@ Reduplication should match a source nuance — don't add it arbitrarily.
 |--------|-----------|---------|
 | per language (rate) | **প্রতি ভাষায়** / **ভাষা প্রতি** | rate, per-unit |
 | for 25 languages (total) | **২৫টি ভাষার জন্য** / **২৫টি ভাষায়** | total scope |
-| $5 USD per language | **প্রতি ভাষায় $5** / **ভাষা প্রতি $5** | rate |
-| $5 USD for all languages | **সব ভাষার জন্য $5** | total |
+| \$5 USD per language | **প্রতি ভাষায় \$5** / **ভাষা প্রতি \$5** | rate |
+| \$5 USD for all languages | **সব ভাষার জন্য \$5** | total |
 
 ### Cost / estimate ordering
 

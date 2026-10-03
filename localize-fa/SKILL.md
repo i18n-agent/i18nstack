@@ -1214,7 +1214,7 @@ You have {count, plural, one {# new message} other {# new messages}}.
 
 **Source:**
 
-> Pro plan: $9.99 per month, billed annually. Includes 100GB storage and unlimited users.
+> Pro plan: \$9.99 per month, billed annually. Includes 100GB storage and unlimited users.
 
 **Persian translation (fa-IR, Iranian market with toman):**
 
@@ -1222,7 +1222,7 @@ You have {count, plural, one {# new message} other {# new messages}}.
 
 **Why:**
 
-- Pricing converted to toman (the everyday Iranian unit). $9.99 ≈ 590,000 toman at illustrative exchange rate.
+- Pricing converted to toman (the everyday Iranian unit). \$9.99 ≈ 590,000 toman at illustrative exchange rate.
 - `طرح حرفه‌ای` — `Pro plan` (ezafe between طرح and حرفه‌ای).
 - `در ماه` for "per month" (NOT `به ازای هر ماه` which is verbose).
 - `صورت‌حساب سالانه` — annual billing.

@@ -507,7 +507,7 @@ Run BEFORE finalizing each translation:
 ### Example 5 — Number/currency disambiguation
 
 **Source:**
-> Total: $1,234.56
+> Total: \$1,234.56
 
 **Wrong (Malaysian or Anglo format):**
 > Total: Rp 1,234.56 (Anglo number format with Indonesian currency — broken)

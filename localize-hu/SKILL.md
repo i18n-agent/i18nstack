@@ -581,7 +581,7 @@ Both branches use the SINGULAR. This is correct Hungarian.
 ### Example 10 — Date and currency
 
 **Source:**
-> January 15, 2024 — Total: $1,234.56
+> January 15, 2024 — Total: \$1,234.56
 
 **Wrong:**
 > 01/15/2024 — 1,234.56 Ft (US date, English number format)

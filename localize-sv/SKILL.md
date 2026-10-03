@@ -628,8 +628,8 @@ Swedish has many words that look like English but mean something else. These are
 |--------|-----------|---------|
 | per language (rate) | **per språk** / **per språk** | rate, per-unit |
 | for 25 languages (total) | **för 25 språk** / **till 25 språk** | total scope |
-| $5 per language | **5 USD per språk** | rate |
-| $5 for all languages | **5 USD för alla språk** | total |
+| \$5 per language | **5 USD per språk** | rate |
+| \$5 for all languages | **5 USD för alla språk** | total |
 
 Mixing these in pricing copy is an auto-fail.
 

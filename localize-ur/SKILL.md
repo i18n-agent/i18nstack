@@ -1584,7 +1584,7 @@ OR using Urdu numerals:
 
 **Source:**
 
-> Pro plan: $9.99 per month, billed annually. Includes 100GB storage and unlimited users.
+> Pro plan: \$9.99 per month, billed annually. Includes 100GB storage and unlimited users.
 
 **Urdu translation (ur-PK, Pakistani market with PKR):**
 
@@ -1592,7 +1592,7 @@ OR using Urdu numerals:
 
 **Why:**
 
-- Pricing converted to PKR (illustrative ≈ 2,800 PKR for $9.99 — actual exchange rate varies).
+- Pricing converted to PKR (illustrative ≈ 2,800 PKR for \$9.99 — actual exchange rate varies).
 - `پرو پلان` — Pro plan (English-loan in Pakistani UI; alternative: پیشہ ورانہ پلان more formal).
 - `فی ماہ` for "per month" — Urdu native rate expression.
 - `سالانہ بل` — "annual billing".
@@ -1685,7 +1685,7 @@ Deleting message... → ✓ Message deleted
 
 ### Example 9 — Numbers with Indian-style grouping and Urdu numerals
 
-**Source:** Total revenue: $1,234,567
+**Source:** Total revenue: \$1,234,567
 
 **Urdu (Pakistani context, traditional Urdu numerals + South Asian grouping):**
 

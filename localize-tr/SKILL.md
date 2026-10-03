@@ -731,7 +731,7 @@ Word form: "saat **14:30**'da" (at 14:30 — note apostrophe before suffix on th
 
 | Wrong | Correct |
 |---|---|
-| $1,234.56 (USD shown in TR UI) | Convert to **1.234,56 ₺** (or keep $ with TR number format: **1.234,56 $**) |
+| \$1,234.56 (USD shown in TR UI) | Convert to **1.234,56 ₺** (or keep $ with TR number format: **1.234,56 $**) |
 | 1234.56 TL | **1.234,56 ₺** |
 | 99,99 TL | **99,99 ₺** (or **99,99 TL**) |
 | TRY 1234 | **1.234 ₺** |
@@ -1168,7 +1168,7 @@ Note:
 ### Example 12 — Date and currency
 
 **Source:**
-> January 15, 2024 — Total: $1,234.56
+> January 15, 2024 — Total: \$1,234.56
 
 **Wrong:**
 > 01/15/2024 — Toplam: 1,234.56 ₺ (US date, English number format)

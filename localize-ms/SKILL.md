@@ -569,7 +569,7 @@ Run BEFORE finalizing each translation:
 ### Example 6 — Number/currency disambiguation
 
 **Source:**
-> Total: $1,234.56
+> Total: \$1,234.56
 
 **Wrong (Indonesian format):**
 > Jumlah: RM 1.234,56 (Indonesian number format with Malaysian currency — broken)

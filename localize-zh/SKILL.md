@@ -475,7 +475,7 @@ The TW prompt explicitly says: *"如果一個詞聽起來像是大陸網站或�
 
 ### E. TW currency, date, calendar
 
-- Currency: `NT$1,000` or `新台幣 1,000 元`. **NEVER `$1,000` alone**; **NEVER `HK$1,000`** in TW content.
+- Currency: `NT\$1,000` or `新台幣 1,000 元`. **NEVER `\$1,000` alone**; **NEVER `HK\$1,000`** in TW content.
 - Date: `2024年1月15日` or `2024-01-15` (Gregorian). Time: `14:30` or `下午 2 點 30 分`.
 - Calendar: Default to Gregorian (`公元/西元`). ROC era (`民國`) ONLY in formal/government/tax contexts when source explicitly requires it: `民國 113 年 1 月 15 日` = 2024. Use `民國` not `中華民國` (less verbose).
 - Number format: `1,234,567.89`.
@@ -699,7 +699,7 @@ The `暫` / `暂` (temporarily / for now) pattern is preferred in Chinese empty 
   - Code: `function() { return true; }`
   - English in mixed text: `使用 API 來處理` (space + half-width API + space + Chinese)
   - Math: `2 + 2 = 4`
-  - Currency in numbers: `¥99.99`, `NT$1,500`, `HK$500`
+  - Currency in numbers: `¥99.99`, `NT\$1,500`, `HK$500`
 - Space between Chinese and Latin/numbers: required. `API密鑰` → `API 密鑰`.
 
 ---
@@ -813,7 +813,7 @@ Quick comparison for the most error-prone tech terms:
 - [ ] Address default `您` (in formal/B2B); `你` only for very casual consumer
 - [ ] TW vocab: 儲存, 設定, 登入, 影片, 軟體, 網路, 網際網路, 預設, 最佳化, 使用者, 行動, 隱私, 提示, 程式, 電腦, 數位, 資訊, 訊息, 伺服器, 資料庫, 資料, 記憶體
 - [ ] NO Mainland terms (軟件→軟體, 網絡→網路, 視頻→影片, 默認→預設, 用戶→使用者)
-- [ ] Currency `NT$1,000` or `新台幣 1,000 元` (NEVER bare `$`)
+- [ ] Currency `NT\$1,000` or `新台幣 1,000 元` (NEVER bare `$`)
 - [ ] Date: Gregorian default; `民國` ONLY if source requires
 - [ ] Drag release: `放開 / 鬆開` (NOT `釋放`)
 - [ ] Place names: `台灣` alone (NEVER `中國台灣`); `中國大陸` or `大陸` for Mainland (NEVER `內地`)

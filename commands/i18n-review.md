@@ -120,7 +120,7 @@ Check locale files for values that should be parameters:
 | Emails/URLs | `{email}` / `{url}` | string |
 | Version numbers | `{version}` | string |
 | Lists ("English, French") | `{languages}` | Intl.ListFormat |
-| Prices ("$9.99") | `{price}` | Intl.NumberFormat |
+| Prices ("\$9.99") | `{price}` | Intl.NumberFormat |
 | Dates ("Jan 1, 2025") | `{date}` | Intl.DateTimeFormat |
 | Nav paths ("Settings > Account") | Translate + locale separator | parameterize |
 

@@ -974,7 +974,7 @@ For UI: use **actor focus (mag-/-um-)** when describing what the user does ("Nag
 ### Example 10 — Date and currency
 
 **Source:**
-> Due: January 15, 2024. Amount: $1,234.56 = ₱70,000
+> Due: January 15, 2024. Amount: \$1,234.56 = ₱70,000
 
 **Wrong (European number format):**
 > Due: Enero 15, 2024. Halaga: ₱70.000  (Indonesian-style period thousands — wrong for Filipino)
