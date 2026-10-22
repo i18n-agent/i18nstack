@@ -69,3 +69,7 @@ i18n-pseudo en.json --preset layout --no-brackets -o pseudo/
   Arabic/Hebrew use `--preset rtl`; for CJK targets use `--preset charset`.
 - Load the pseudo file as a fake locale in the app and screenshot key screens;
   any un-bracketed English text = hardcoded string.
+- Keys are NOT always preserved: the JSON parsers (auto, `-f json`, `-f i18next`) split keys on `.`, so
+  natural-language keys (i18next `keySeparator: false`, e.g. `"Sign in now."`) come back as nested objects
+  (seen 2026-10-22). Workaround: re-key to `{"k0": value, …}`, pseudo that, map the
+  values back onto the original keys.
