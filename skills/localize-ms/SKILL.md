@@ -52,7 +52,7 @@ In modern Malaysian usage, both terms are interchangeable in practice. Governmen
 | Hospital | **hospital** | rumah sakit |
 | Money | **wang** / duit | uang |
 | Car | **kereta** | mobil |
-| Train | **keretapi** | kereta api (Indonesian, with space) |
+| Train | **kereta api** (two words; "keretapi" survives only in gazetted names such as station signs) | kereta api (same spelling in Indonesian) |
 | Police | **polis** | polisi (Indonesian) |
 | Can / able | **boleh** | bisa (Indonesian — DANGEROUS in Malaysian: see false friends) |
 
@@ -142,7 +142,7 @@ Singapore Malay: SGD (S$). When translating for Brunei or Singapore audiences, a
 |---|---|---|
 | Formal | **Anda** (capitalized) | Business UI, professional software, customer-facing |
 | Standard polite | **awak** | General polite peer-level usage |
-| Familiar | **kamu** | Casual, friends, peers |
+| Familiar | **kau** / **engkau** | Close friends only. Avoid **kamu** between adults: in Malaysia it is adult-to-child, teacher-to-class or exhortative, and sounds condescending to a peer |
 | Honorifics | **Tuan** (Mr/Sir), **Puan** (Mrs/Madam), **Encik** (Mr), **Cik** (Miss / unmarried) | Direct address with name |
 | Very formal | **Datuk** (titled), **Datin** (wife of Datuk), **Dato'**, **Tan Sri**, **Tun** | Royal/honorific titles |
 
@@ -490,7 +490,7 @@ Run BEFORE finalizing each translation:
 - [ ] **Reduplication for plural** without numbers (fail-fail)
 - [ ] **NO reduplication with numbers** (5 fail, NOT 5 fail-fail)
 - [ ] **Adverb after verb** (mengesan secara automatik, NOT secara automatik mengesan)
-- [ ] **Conjunction commas:** no comma before atau/dan; comma before yang/jika/kerana/apabila
+- [ ] **Conjunction commas:** no comma before atau/dan; no comma before a defining "yang" ("Fail yang anda pilih"); comma before jika/kerana/apabila
 - [ ] **Placeholders preserved** exactly
 
 **Naturalness:**
